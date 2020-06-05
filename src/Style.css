@@ -1,0 +1,107 @@
+body{
+  padding:200px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+h1{
+  color:rebeccapurple;
+  border: 0px groove red;
+  border-width: 2px;
+  border-radius: 25px;
+  
+}
+
+h4{
+  color:rosybrown;
+  border: 0px groove olive;
+  border-width: 2px;
+  border-radius: 25px;
+  border-collapse: collapse;
+}
+
+input.textBox{
+  margin: 4px;
+  width: 130px;
+  border-color: lightblue;
+  border-radius: 50px;
+  text-align: center;
+}
+
+input.radioButton{
+  margin-left: 10px;
+  margin-right: 5px;
+  width: auto;
+  height: 15px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  #tests {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   
+    border: 3px solid lightsteelblue;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  #tests td,
+  #tests th {
+    border: 2px solid #ddd;
+    padding: 1px;
+  }
+
+  #tests tr, #tests th{
+    height: 5px;
+  }
+  
+#lDefaults {
+  float: left;
+  margin:20px;
+}
+
+.abcd{
+  margin: 2px;
+  border: 1px solid red;
+}
+
+#rDefaults{
+  float: right;
+}
+  #tests tr:nth-child(even) {
+    background-color:lightcyan;
+  }
+  
+  #tests tr:hover {
+    background-color: #ddd;
+  }
+  
+  #tests th {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    text-align: center;
+    background-color:rosybrown;
+    color: white;
+  }

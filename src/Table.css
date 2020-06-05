@@ -1,0 +1,50 @@
+body{
+    padding:200px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  caption{
+      text-align: center;
+      font-family: fantasy;
+      color: chocolate;
+      border: 2px solid crimson;
+      border-radius: 50%;
+      border-width: 3px;
+  }
+  
+  .responsive-table{
+    text-align: center;
+    font-family: Arial, Helvetica, "sans-serif";
+    font-size:small;   
+    border: 3px solid lightsteelblue;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .responsive-table td,
+  .responsive-table th {
+    border: 2px solid #ddd;
+    padding: 1px;
+  }
+
+  .responsive-table tr, .responsive-table th{
+    height: 1px;
+  }
+
+  .responsive-table tr:nth-child(even) {
+    background-color:lightcyan;
+  }
+  
+  .responsive-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .responsive-table th {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    max-height: 1px !important;
+    text-align: center;
+    background-color:rosybrown;
+    color: white;
+  }
