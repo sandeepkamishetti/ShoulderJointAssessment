@@ -255,17 +255,19 @@ class AssessmentForm extends Component {
 
     render() {
         var arrayName = "patientInfo";
-        var isLeftRightBoth = this.props.values.patientInfo.history;
-        var checkedL = (isLeftRightBoth === "Left" ? true : false);
-        var checkedR = (isLeftRightBoth === "Right" ? true : false);
-        var checkedB = (isLeftRightBoth === "Both" ? true : false);
+        var isLeftRightBoth = this.props.values.patientInfo[0].history;
+        const checkedL = (isLeftRightBoth === "Left" ? false : true);
+        const checkedR = (isLeftRightBoth === "Right" ? false : true);
+        const checkedB = (isLeftRightBoth === "Both" ? true : false);
+        //const disableL = checkedL && checkedB
+        //const disableR = checkedR && checkedB
+
         return (<div>
             <h1>SHOULDER JOINT ASSESSMENT FORM</h1>
             <div>
-                {
-                    <div id="lDefaults">
+                {<div id="lDefaults">
                         <label className="abcd">Patinent's Name</label>
-                        <input className="abcd" disabled={checkedR} type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                        <input className="abcd" type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
                     </div>}
                 {<div id="rDefaults">
                     <label className="abcd">YH Number</label>
@@ -378,16 +380,16 @@ class AssessmentForm extends Component {
                                         {exam.examName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
 
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -419,16 +421,16 @@ class AssessmentForm extends Component {
                                         {exam.examName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
 
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -460,16 +462,16 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
 
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -501,16 +503,16 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
 
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -542,16 +544,16 @@ class AssessmentForm extends Component {
                                         {exam.examName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
                                         <label>NO</label><br />
                                     </td>
 
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
                                         <label>NO</label><br />
                                     </td>
                                 </tr>
@@ -586,18 +588,18 @@ class AssessmentForm extends Component {
                                     </td>
                                     <td>
                                         <label>{Label1}</label>
-                                        <input className="textBox" placeholder="YES or NO" type="text" name={"leftLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                         <br />
                                         <label>{Label2}</label>
-                                        <input className="textBox" placeholder="YES or NO" type="text" name={"leftGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
 
                                     </td>
                                     <td>
                                         <label>{Label1}</label>
-                                        <input className="textBox" placeholder="YES or NO" type="text" name={"rightLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                         <br />
                                         <label>{Label2}</label>
-                                        <input className="textBox" placeholder="YES or NO" type="text" name={"rightGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
 
                                     </td>
                                 </tr>
@@ -635,16 +637,16 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="0 to 180 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="0 to 180 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="0 to 180 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="0 to 180 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                 </tr>
 
@@ -681,16 +683,16 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="-60 to 90 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="-60 to 90 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="-60 to 90 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                     <td>
-                                        <input className="textBox" type="text" placeholder="-60 to 90 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
                                     </td>
                                 </tr>
 
@@ -721,15 +723,15 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -761,15 +763,15 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
                                         <label>NO</label><br />
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
                                         <label>NO</label><br />
                                     </td>
                                 </tr>
@@ -801,15 +803,15 @@ class AssessmentForm extends Component {
                                         {test.testName}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
                                         <label>NO</label><br />
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
                                         <label>YES</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
                                         <label>NO</label><br />
                                     </td>
                                 </tr>
@@ -841,15 +843,15 @@ class AssessmentForm extends Component {
                                         {test.whichNerve}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
@@ -882,15 +884,15 @@ class AssessmentForm extends Component {
                                         {test.whichNerve}
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                     <td>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
                                         <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
                                         <label>NEGATIVE</label><br />
                                     </td>
                                 </tr>
