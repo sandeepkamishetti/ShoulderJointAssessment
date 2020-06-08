@@ -258,9 +258,7 @@ class AssessmentForm extends Component {
         var isLeftRightBoth = this.props.values.patientInfo[0].history;
         const checkedL = (isLeftRightBoth === "Left" ? false : true);
         const checkedR = (isLeftRightBoth === "Right" ? false : true);
-        const checkedB = (isLeftRightBoth === "Both" ? true : false);
-        //const disableL = checkedL && checkedB
-        //const disableR = checkedR && checkedB
+        const symptoms = this.props.values.symptomsForPain;
 
         return (<div>
             <h1>SHOULDER JOINT ASSESSMENT FORM</h1>
@@ -321,7 +319,7 @@ class AssessmentForm extends Component {
                                         <label>NO</label><br />
                                     </td>
                                     <td>
-                                        <input type="text" name="duration" value={this.props.values.symptomsForPain.duration} placeholder="in Days" onChange={(e) => this.onDurationChange(index, e)} ></input>
+                                        <input type="text" disabled={(symptoms[index].exists === "Yes" ? false : true)} name="duration" value={(symptoms[index].exists) === "Yes" ? this.props.values.symptomsForPain.duration: 0} placeholder="in Days" onChange={(e) => this.onDurationChange(index, e)} ></input>
                                     </td>
                                 </tr>
                             })
