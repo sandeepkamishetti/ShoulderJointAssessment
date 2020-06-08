@@ -32,6 +32,7 @@ class Submit extends Component {
                 <h2>{patientInformation[0].patientName}</h2>
                 <h5>{patientInformation[0].yhNum}</h5>
                 <h5>{patientInformation[0].gender}</h5>
+                <h5>{patientInformation[0].Date}</h5>
                 <h5>{patientInformation[0].history}</h5>
                 <div className="container">
                     <h3>SYMPTOMS</h3>
