@@ -8,36 +8,11 @@ class AssessmentForm extends Component {
     }
 
     onDurationChange = (index, e) => {
-        console.log("symptom is " + JSON.stringify(this.props.values.symptomsForPain[index]))
-
         let newArray = [...this.props.values.symptomsForPain]
         newArray[index].duration = parseInt(e.target.value)
         this.setState({
             symptomsForPain: newArray
         }, () => { console.log(this.props.values) })
-    }
-
-    onTextChange = (e) => {
-        let num = e.target.value
-        num = this.props.values.yhNum.includes("YH") ? num : "YH" + num
-        this.setState({
-            yhNum: num
-        }, () => { console.log(this.props.values) })
-    }
-
-    onNameChange = (e) => {
-        this.setState({
-            patientName: e.target.value
-        }, () => { console.log(this.props.values) })
-    }
-
-    onRadioBtnChangeEvent = (e) => {
-        var temp = e.target.value
-        this.setState({
-            ...this.props.values, gender: e.target.value
-        }, () => {
-            console.log(this.props.values)
-        })
     }
 
     onRadioChangeEvent = (index, e) => {
@@ -83,12 +58,21 @@ class AssessmentForm extends Component {
             case "motorExam":
                 newArray = [...this.props.values.motorExam];
                 break;
+            case "patientInfo":
+                newArray = [...this.props.values.patientInfo];
+                break;
             default: ;
         }
         if (x.includes("right"))
             newArray[index].result.right = e.target.value
         else if (x.includes("left"))
             newArray[index].result.left = e.target.value
+        else if (x === "gender")
+            newArray[0].gender = e.target.value
+        else if (x === "history")
+            newArray[0].history = e.target.value
+        else if (x === "spurlingtest")
+            newArray[0].spurlingtest = e.target.value
 
         switch (arrayName) {
             case "shoulderStrengthExam":
@@ -161,6 +145,13 @@ class AssessmentForm extends Component {
                     console.log(this.props.values)
                 })
                 break;
+            case "patientInfo":
+                this.setState({
+                    patientInfo: newArray
+                }, () => {
+                    console.log(this.props.values)
+                })
+                break;
             default: ;
         }
     }
@@ -168,7 +159,7 @@ class AssessmentForm extends Component {
     onTextChanges = (arrayName, index, e) => {
         var targetName = e.target.name;
         var targetValue = e.target.value;
-        if (arrayName !== "neurovascularExamDCR")
+        if ((arrayName !== "neurovascularExamDCR") && (arrayName !== "patientInfo"))
             targetValue = parseInt(targetValue);
 
         if (arrayName === "shoulderRangeOfMotionP")
@@ -177,6 +168,8 @@ class AssessmentForm extends Component {
             newArray = [...this.props.values.shoulderRangeOfMotionN];
         else if (arrayName === "neurovascularExamDCR")
             newArray = [...this.props.values.neurovascularExamDCR];
+        else if (arrayName === "patientInfo")
+            newArray = [...this.props.values.patientInfo];
 
         switch (targetName) {
             case "rightActive":
@@ -203,6 +196,12 @@ class AssessmentForm extends Component {
             case "leftGreater":
                 newArray[index].left.greater = targetValue;
                 break;
+            case "patientName":
+                newArray[0].patientName = targetValue;
+                break;
+            case "yhNum":
+                newArray[0].yhNum = "YH" + targetValue;
+                break;
             default: ;
         }
 
@@ -224,13 +223,24 @@ class AssessmentForm extends Component {
             }, () => {
                 console.log(this.props.values)
             })
+        else if (arrayName === "patientInfo")
+            this.setState({
+                patientInfo: newArray
+            }, () => {
+                console.log(this.props.values)
+            })
     }
 
     onDateChange = (e) => {
-        var selectedDate = e.target.value
+        var targetValue = e.target.value;
+        var newArray = [...this.props.values.patientInfo];
+        newArray[0].Date = targetValue;
         this.setState({
-            Date: selectedDate
+            patientInfo: newArray
+        }, () => {
+            console.log(this.props.values)
         })
+
     }
 
     onRadioChange = (index, e) => {
@@ -244,42 +254,47 @@ class AssessmentForm extends Component {
     }
 
     render() {
+        var arrayName = "patientInfo";
+        var isLeftRightBoth = this.props.values.patientInfo.history;
+        var checkedL = (isLeftRightBoth === "Left" ? true : false);
+        var checkedR = (isLeftRightBoth === "Right" ? true : false);
+        var checkedB = (isLeftRightBoth === "Both" ? true : false);
         return (<div>
             <h1>SHOULDER JOINT ASSESSMENT FORM</h1>
-            <h2>{this.props.values.renderView}</h2>
             <div>
-                <div id="lDefaults">
-                    <label className="abcd">Patinent's Name</label>
-                    <input className="abcd" type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName}  onChange={(e) => this.onNameChange(e)} ></input>
-                </div>
-                <div id="rDefaults">
+                {
+                    <div id="lDefaults">
+                        <label className="abcd">Patinent's Name</label>
+                        <input className="abcd" disabled={checkedR} type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                    </div>}
+                {<div id="rDefaults">
                     <label className="abcd">YH Number</label>
-                    <input className="abcd" type="text" placeholder="Enter your YH Number if any" name="YH Number" value={this.props.values.yhNum} onChange={(e) => this.onTextChange(e)} ></input>
-                </div>
+                    <input className="abcd" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                </div>}
                 <br /><br />
-                <div id="rDefaults">
+                {<div id="rDefaults">
                     <label className="abcd">Gender</label>
-                    <input type="radio" className="radioButton" name="gender" value="Male" onChange={this.onRadioBtnChangeEvent}></input>
+                    <input type="radio" className="radioButton" name="gender" value="Male" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                     <label className="abcd">MALE</label>
-                    <input type="radio" className="radioButton" name="gender" value="Female" onChange={this.onRadioBtnChangeEvent}></input>
+                    <input type="radio" className="radioButton" name="gender" value="Female" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                     <label>FEMALE</label>
-                </div><br />
-                <div id="lDefaults">
+                </div>}<br />
+                {<div id="lDefaults">
                     <label className="abcd">Date</label>
                     <input className="abcd" type="date" name="Date" value={this.props.values.Date} onChange={(e) => this.onDateChange(e)} ></input>
-                </div>
+                </div>}
                 <br />
             </div><br /><br />
-            <div>
+            {<div>
                 <label>History</label>
-                <input type="radio" className="radioButton" name="history" value="Left" onChange={this.onRadioBtnChangeEvent}></input>
+                <input type="radio" className="radioButton" name="history" value="Left" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                 <label>LEFT</label>
-                <input type="radio" className="radioButton" name="history" value="Right" onChange={this.onRadioBtnChangeEvent}></input>
+                <input type="radio" className="radioButton" name="history" value="Right" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                 <label>RIGHT</label>
-                <input type="radio" className="radioButton" name="history" value="Both" onChange={this.onRadioBtnChangeEvent}></input>
+                <input type="radio" className="radioButton" name="history" value="Both" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                 <label>BOTH</label><br />
             </div>
-
+            }
             <div>
                 <h4>SYMPTOMS</h4>
                 <table id="tests">
@@ -888,9 +903,9 @@ class AssessmentForm extends Component {
             <div>
                 <h4>CERVICAL SPINE</h4>
                 <label>SPURLING TEST</label>
-                <input type="radio" className="radioButton" name="spurlingtest" value="Positive"></input>
+                <input type="radio" className="radioButton" name="spurlingtest" value="Positive" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
                 <label>POSITIVE</label>
-                <input type="radio" className="radioButton" name="spurlingtest" value="Negative"></input>
+                <input type="radio" className="radioButton" name="spurlingtest" value="Negative" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
                 <label>NEGATIVE</label>
 
             </div>
