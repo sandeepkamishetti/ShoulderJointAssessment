@@ -15,7 +15,7 @@ h1{
 h4{
   color:rosybrown;
   border: 0px groove olive;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 25px;
   border-collapse: collapse;
 }
@@ -104,4 +104,15 @@ input.radioButton{
     text-align: center;
     background-color:rosybrown;
     color: white;
+  }
+
+  .btn1{
+    margin-left: 40%;
+    background-color: lightsalmon;
+    text-align: center;
+    border: none;
+  }
+
+  .btn:hover{
+    background-color: none;
   }
