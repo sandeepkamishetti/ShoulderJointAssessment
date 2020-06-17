@@ -5,6 +5,8 @@ import './Style.css'
 class AssessmentForm extends Component {
     constructor(props) {
         super(props);
+        this.state={
+        }
     }
 
     onDurationChange = (index, e) => {
