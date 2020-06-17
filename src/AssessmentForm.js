@@ -264,9 +264,9 @@ class AssessmentForm extends Component {
             <h1>SHOULDER JOINT ASSESSMENT FORM</h1>
             <div>
                 {<div id="lDefaults">
-                        <label className="abcd">Patinent's Name</label>
-                        <input className="abcd" type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
-                    </div>}
+                    <label className="abcd">Patinent's Name</label>
+                    <input className="abcd" type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                </div>}
                 {<div id="rDefaults">
                     <label className="abcd">YH Number</label>
                     <input className="abcd" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
@@ -296,618 +296,665 @@ class AssessmentForm extends Component {
             </div>
             }
             <div>
-                <h4>SYMPTOMS</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th><h5>REASON</h5></th>
-                            <th><h5>EXISTS</h5></th>
-                            <th><h5>DURATION (in days)</h5></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.symptomsForPain.map((symptom, index) => {
-                                return <tr key={index}>
-                                    <td>
-                                        {symptom.reason.toUpperCase()}
-                                    </td>
-                                    <td>
-                                        <input type="radio" className="radioButton" name={symptom.reason} value="Yes" onChange={(e) => this.onRadioChangeEvent(index, e)}></input>
-                                        <label>YES</label>
-                                        <input type="radio" className="radioButton" name={symptom.reason} value="No" onChange={(e) => this.onRadioChangeEvent(index, e)}></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="text" disabled={(symptoms[index].exists === "Yes" ? false : true)} name="duration" value={(symptoms[index].exists) === "Yes" ? this.props.values.symptomsForPain.duration: 0} placeholder="in Days" onChange={(e) => this.onDurationChange(index, e)} ></input>
-                                    </td>
-                                </tr>
-                            })
-                        }
-                    </tbody>
-                </table>
+                {/* <h4>SYMPTOMS</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#symptoms">SYMPTOMS</button></h4>
+                <div id="symptoms" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th><h5>REASON</h5></th>
+                                <th><h5>EXISTS</h5></th>
+                                <th><h5>DURATION (in days)</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.symptomsForPain.map((symptom, index) => {
+                                    return <tr key={index}>
+                                        <td>
+                                            {symptom.reason.toUpperCase()}
+                                        </td>
+                                        <td>
+                                            <input type="radio" className="radioButton" name={symptom.reason} value="Yes" onChange={(e) => this.onRadioChangeEvent(index, e)}></input>
+                                            <label>YES</label>
+                                            <input type="radio" className="radioButton" name={symptom.reason} value="No" onChange={(e) => this.onRadioChangeEvent(index, e)}></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled={(symptoms[index].exists === "Yes" ? false : true)} name="duration" value={(symptoms[index].exists) === "Yes" ? this.props.values.symptomsForPain.duration : 0} placeholder="in Days" onChange={(e) => this.onDurationChange(index, e)} ></input>
+                                        </td>
+                                    </tr>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>EXAMINATION</h4>
-                <table id="tests">
+                {/* <h4>EXAMINATION</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#examination">EXAMINATION</button></h4>
+                <div id="examination" className="collapse">
+                    <table id="tests">
 
-                    <thead>
-                        <tr>
-                            <th><h5>TYPE OF TENDERNESS </h5></th>
-                            <th><h5>RESULT</h5></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.tenderness.map((tender, index) => {
-                                return <tr key={index}>
-                                    <td>
-                                        {tender.type}
-                                    </td>
-                                    <td>
-                                        <input type="radio" className="radioButton" name={tender.type} value="Positive" onChange={(e) => this.onRadioChange(index, e)}></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" className="radioButton" name={tender.type} value="Negative" onChange={(e) => this.onRadioChange(index, e)}></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
-                            })
-                        }
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th><h5>TYPE OF TENDERNESS </h5></th>
+                                <th><h5>RESULT</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.tenderness.map((tender, index) => {
+                                    return <tr key={index}>
+                                        <td>
+                                            {tender.type}
+                                        </td>
+                                        <td>
+                                            <input type="radio" className="radioButton" name={tender.type} value="Positive" onChange={(e) => this.onRadioChange(index, e)}></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" className="radioButton" name={tender.type} value="Negative" onChange={(e) => this.onRadioChange(index, e)}></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>SHOULDER STRENGTH EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.shoulderStrengthExam.map((exam, index) => {
-                                var arrayName = "shoulderStrengthExam"
-                                return <tr key={index}>
-                                    <td>
-                                        {exam.examName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
+                {/* <h4>SHOULDER STRENGTH EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderstrengthexam">SHOULDER STRENGTH EXAM</button></h4>
+                <div id="shoulderstrengthexam" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.shoulderStrengthExam.map((exam, index) => {
+                                    var arrayName = "shoulderStrengthExam"
+                                    return <tr key={index}>
+                                        <td>
+                                            {exam.examName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
 
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>SHOULDER INSTABILITY EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.shoulderInstabilityExam.map((exam, index) => {
-                                var arrayName = "shoulderInstabilityExam"
-                                return <tr key={index}>
-                                    <td>
-                                        {exam.examName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
+                {/* <h4>SHOULDER INSTABILITY EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderinstabilityexam">SHOULDER INSTABILITY EXAM</button></h4>
+                <div id="shoulderinstabilityexam" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.shoulderInstabilityExam.map((exam, index) => {
+                                    var arrayName = "shoulderInstabilityExam"
+                                    return <tr key={index}>
+                                        <td>
+                                            {exam.examName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
 
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>SHOULDER IMPINGEMENT SIGNS</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.shoulderImpingementSigns.map((test, index) => {
-                                var arrayName = "shoulderImpingementSigns"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
+                {/* <h4>SHOULDER IMPINGEMENT SIGNS</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderimpingementsigns">SHOULDER IMPINGEMENT SIGNS</button></h4>
+                <div id="shoulderimpingementsigns" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.shoulderImpingementSigns.map((test, index) => {
+                                    var arrayName = "shoulderImpingementSigns"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
 
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>TESTS FOR LABRAL TEAR/BICEPS LESION</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.labralTearTest.map((test, index) => {
-                                var arrayName = "labralTearTest"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
+                {/* <h4>TESTS FOR LABRAL TEAR/BICEPS LESION</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#testsforlabraltear">TESTS FOR LABRAL TEAR/BICEPS LESION</button></h4>
+                <div id="testsforlabraltear" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.labralTearTest.map((test, index) => {
+                                    var arrayName = "labralTearTest"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
 
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>NEUROVASCULAR EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.neurovascularExamRP.map((exam, index) => {
-                                var arrayName = "neurovascularExamRP"
-                                return <tr key={index}>
-                                    <td>
-                                        {exam.examName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
-                                        <label>NO</label><br />
-                                    </td>
+                {/* <h4>NEUROVASCULAR EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#neurovascularexamrp">NEUROVASCULAR EXAM</button></h4>
+                <div id="neurovascularexamrp" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.neurovascularExamRP.map((exam, index) => {
+                                    var arrayName = "neurovascularExamRP"
+                                    return <tr key={index}>
+                                        <td>
+                                            {exam.examName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                            <label>NO</label><br />
+                                        </td>
 
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                </tr>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>NEUROVASCULAR EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.neurovascularExamDCR.map((exam, index) => {
-                                var arrayName = "neurovascularExamDCR";
-                                var Label1 = "< 2 Sec";
-                                var Label2 = "> 2 Sec";
-                                return <tr key={index}>
-                                    <td>
-                                        {exam.examName}
-                                    </td>
-                                    <td>
-                                        <label>{Label1}</label>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                        <br />
-                                        <label>{Label2}</label>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                {/* <h4>NEUROVASCULAR EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#neurovascularexamDCR">NEUROVASCULAR EXAM</button></h4>
+                <div id="neurovascularexamDCR" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.neurovascularExamDCR.map((exam, index) => {
+                                    var arrayName = "neurovascularExamDCR";
+                                    var Label1 = "< 2 Sec";
+                                    var Label2 = "> 2 Sec";
+                                    return <tr key={index}>
+                                        <td>
+                                            {exam.examName}
+                                        </td>
+                                        <td>
+                                            <label>{Label1}</label>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                            <br />
+                                            <label>{Label2}</label>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} placeholder="YES or NO" type="text" name={"leftGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
 
-                                    </td>
-                                    <td>
-                                        <label>{Label1}</label>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                        <br />
-                                        <label>{Label2}</label>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <label>{Label1}</label>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightLess"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                            <br />
+                                            <label>{Label2}</label>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} placeholder="YES or NO" type="text" name={"rightGreater"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
 
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>SHOULDER RANGE OF MOTION</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="3"> <h5>TEST NAME</h5> </th>
-                        </tr>
-                        <tr>
-                            <th colSpan="2"> <h5>LEFT</h5> </th>
-                            <th colSpan="2"> <h5>RIGHT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>ACTIVE</h5> </th>
-                            <th> <h5>PASSIVE</h5> </th>
+                {/* <h4>SHOULDER RANGE OF MOTION</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderRangeOfMotionP">SHOULDER RANGE OF MOTION</button></h4>
+                <div id="shoulderRangeOfMotionP" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="3"> <h5>TEST NAME</h5> </th>
+                            </tr>
+                            <tr>
+                                <th colSpan="2"> <h5>LEFT</h5> </th>
+                                <th colSpan="2"> <h5>RIGHT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>ACTIVE</h5> </th>
+                                <th> <h5>PASSIVE</h5> </th>
 
-                            <th> <h5>ACTIVE</h5> </th>
-                            <th> <h5>PASSIVE</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.shoulderRangeOfMotionP.map((test, index) => {
-                                var arrayName = "shoulderRangeOfMotionP";
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                </tr>
+                                <th> <h5>ACTIVE</h5> </th>
+                                <th> <h5>PASSIVE</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.shoulderRangeOfMotionP.map((test, index) => {
+                                    var arrayName = "shoulderRangeOfMotionP";
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="0 to 180 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="0 to 180 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>SHOULDER RANGE OF MOTION</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="3"> <h5>TEST NAME</h5> </th>
-                        </tr>
-                        <tr>
-                            <th colSpan="2"> <h5>LEFT</h5> </th>
-                            <th colSpan="2"> <h5>RIGT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>ACTIVE</h5> </th>
-                            <th> <h5>PASSIVE</h5> </th>
+                {/* <h4>SHOULDER RANGE OF MOTION</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderRangeOfMotionN">SHOULDER RANGE OF MOTION</button></h4>
+                <div id="shoulderRangeOfMotionN" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="3"> <h5>TEST NAME</h5> </th>
+                            </tr>
+                            <tr>
+                                <th colSpan="2"> <h5>LEFT</h5> </th>
+                                <th colSpan="2"> <h5>RIGT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>ACTIVE</h5> </th>
+                                <th> <h5>PASSIVE</h5> </th>
 
-                            <th> <h5>ACTIVE</h5> </th>
-                            <th> <h5>PASSIVE</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.shoulderRangeOfMotionN.map((test, index) => {
-                                var arrayName = "shoulderRangeOfMotionN";
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                    <td>
-                                        <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
-                                    </td>
-                                </tr>
+                                <th> <h5>ACTIVE</h5> </th>
+                                <th> <h5>PASSIVE</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.shoulderRangeOfMotionN.map((test, index) => {
+                                    var arrayName = "shoulderRangeOfMotionN";
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedL} type="text" placeholder="-60 to 90 degrees" name={"leftPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightActive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                        <td>
+                                            <input className="textBox" disabled={(isLeftRightBoth === "Both") ? false : checkedR} type="text" placeholder="-60 to 90 degrees" name={"rightPassive"} onChange={(e) => this.onTextChanges(arrayName, index, e)}></input>
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>GLOBAL RESTRICTION OF MOVEMENTS</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.grom.map((test, index) => {
-                                var arrayName = "grom"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                {/* <h4>GLOBAL RESTRICTION OF MOVEMENTS</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#grom">GLOBAL RESTRICTION OF MOVEMENTS</button></h4>
+                <div id="grom" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.grom.map((test, index) => {
+                                    var arrayName = "grom"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>WINGING OF SCAPULA</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.wingingsOfScapula.map((test, index) => {
-                                var arrayName = "wingingsOfScapula"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                </tr>
+                {/* <h4>WINGING OF SCAPULA</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#wingingsOfScapula">WINGING OF SCAPULA</button></h4>
+                <div id="wingingsOfScapula" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.wingingsOfScapula.map((test, index) => {
+                                    var arrayName = "wingingsOfScapula"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="Yes" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} value="No" onChange={(e) => this.onRadioBtnChange(arrayName, index, e)}></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>MUSCLE WASTING</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.muscleWasting.map((test, index) => {
-                                var arrayName = "muscleWasting"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.testName}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
-                                        <label>YES</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
-                                        <label>NO</label><br />
-                                    </td>
-                                </tr>
+                {/* <h4>MUSCLE WASTING</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#muscleWasting">MUSCLE WASTING</button></h4>
+                <div id="muscleWasting" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.muscleWasting.map((test, index) => {
+                                    var arrayName = "muscleWasting"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.testName}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Yes"></input>
+                                            <label>YES</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="No"></input>
+                                            <label>NO</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>MOTOR EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.motorExam.map((test, index) => {
-                                var arrayName = "motorExam"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.whichNerve}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                {/* <h4>MOTOR EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#motorExam">MOTOR EXAM</button></h4>
+                <div id="motorExam" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.motorExam.map((test, index) => {
+                                    var arrayName = "motorExam"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.whichNerve}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div>
-                <h4>SENSORY EXAM</h4>
-                <table id="tests">
-                    <thead>
-                        <tr>
-                            <th rowSpan="2"> <h5>TEST NAME</h5> </th>
-                            <th colSpan="2"> <h5>RESULT</h5> </th>
-                        </tr>
-                        <tr>
-                            <th> <h5>LEFT</h5> </th>
-                            <th> <h5>RIGHT</h5> </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.props.values.sensoryExam.map((test, index) => {
-                                var arrayName = "sensoryExam"
-                                return <tr key={index}>
-                                    <td>
-                                        {test.whichNerve}
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                    <td>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
-                                        <label>POSITIVE</label>
-                                        <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
-                                        <label>NEGATIVE</label><br />
-                                    </td>
-                                </tr>
+                {/* <h4>SENSORY EXAM</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#sensoryExam">SENSORY EXAM</button></h4>
+                <div id="sensoryExam" className="collapse">
+                    <table id="tests">
+                        <thead>
+                            <tr>
+                                <th rowSpan="2"> <h5>TEST NAME</h5> </th>
+                                <th colSpan="2"> <h5>RESULT</h5> </th>
+                            </tr>
+                            <tr>
+                                <th> <h5>LEFT</h5> </th>
+                                <th> <h5>RIGHT</h5> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                this.props.values.sensoryExam.map((test, index) => {
+                                    var arrayName = "sensoryExam"
+                                    return <tr key={index}>
+                                        <td>
+                                            {test.whichNerve}
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedL} className="radioButton" name={arrayName + "left" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                        <td>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Positive"></input>
+                                            <label>POSITIVE</label>
+                                            <input type="radio" disabled={(isLeftRightBoth === "Both") ? false : checkedR} className="radioButton" name={arrayName + "right" + index} onChange={(e) => this.onRadioBtnChange(arrayName, index, e)} value="Negative"></input>
+                                            <label>NEGATIVE</label><br />
+                                        </td>
+                                    </tr>
 
-                            })
-                        }
-                    </tbody>
-                </table>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
-                <h4>CERVICAL SPINE</h4>
-                <label>SPURLING TEST</label>
-                <input type="radio" className="radioButton" name="spurlingtest" value="Positive" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
-                <label>POSITIVE</label>
-                <input type="radio" className="radioButton" name="spurlingtest" value="Negative" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
-                <label>NEGATIVE</label>
-
+                {/* <h4>CERVICAL SPINE</h4> */}
+                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#cervicalSpine">CERVICAL SPINE</button></h4>
+                <div id="cervicalSpine" className="collapse">
+                    <label>SPURLING TEST</label>
+                    <input type="radio" className="radioButton" name="spurlingtest" value="Positive" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
+                    <label>POSITIVE</label>
+                    <input type="radio" className="radioButton" name="spurlingtest" value="Negative" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
+                    <label>NEGATIVE</label>
+                </div>
             </div>
             <button value={1} onClick={this.props.clickBtn}>SUBMIT</button>
         </div>)
