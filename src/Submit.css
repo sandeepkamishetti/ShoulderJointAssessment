@@ -8,12 +8,33 @@ body{
     text-align: center;
   }
 
+  #name{
+      text-align: left;
+  }
+
+  #yhNum{
+    text-align: right;
+}
+
+#gender{
+    text-align: left;
+}
+
+#date{
+    text-align: right;
+}
+
+#history{
+    text-align: left;
+}
   h3{
     text-emphasis: underline;  
     text-align: center;
-      font-family: Georgia;
-      color: rgba(62, 122, 27, 0.842);
-      border-radius: 50%;
+     font-family: Georgia;
+     color: rgba(62, 122, 27, 0.842);
+     border: 0px groove olive;
+     border-width: 1px;
+     border-radius: 25px;
   }
   
   .responsive-table{
@@ -21,7 +42,7 @@ body{
     font-family: Arial, Helvetica, "sans-serif";
     font-size:small;   
     border: 3px solid rgb(68, 141, 98);
-    border-radius: 10px;
+    border-radius: 1px;
     width: 100%;
   }
   
