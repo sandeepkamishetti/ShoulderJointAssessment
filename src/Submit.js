@@ -42,22 +42,22 @@ class Submit extends Component {
                         <table className="responsive-table">
                             <thead>
                                 <tr>
-                                    <th scope="col"><h5>REASON</h5></th>
-                                    <th scope="col"><h5>EXISTS</h5></th>
-                                    <th scope="col"><h5>DURATION (in days)</h5></th>
+                                    <th><h5>REASON</h5></th>
+                                    <th><h5>EXISTS</h5></th>
+                                    <th><h5>DURATION (in days)</h5></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     symptoms.map((symptom, index) => {
                                         return <tr key={index}>
-                                            <td scope="row">
+                                            <td>
                                                 {symptom.reason.toUpperCase()}
                                             </td>
-                                            <td scope="row">
+                                            <td>
                                                 {symptom.exists}
                                             </td>
-                                            <td scope="row">
+                                            <td>
                                                 {symptom.duration}
                                             </td>
                                         </tr>
