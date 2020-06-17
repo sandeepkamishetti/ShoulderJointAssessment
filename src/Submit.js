@@ -4,6 +4,9 @@ import './Submit.css'
 class Submit extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            
+        }
     }
     render() {
         var Label1 = "(< 2 Sec)";
