@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 //import Table from './Table.js'
+import leftShoulder from "./images/leftShoulder.png"
+import rightShoulder from "./images/rightShoulder.png"
 import './Style.css'
 
 class AssessmentForm extends Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
+
         }
     }
 
@@ -263,30 +266,54 @@ class AssessmentForm extends Component {
         const symptoms = this.props.values.symptomsForPain;
 
         return (<div>
-            <h1>SHOULDER JOINT ASSESSMENT FORM</h1>
+            <div><h1> <img className="leftImages" src={leftShoulder} alt=""></img> SHOULDER JOINT ASSESSMENT FORM <img className="rightImages" src={rightShoulder} alt=""></img></h1></div>
             <div>
-                {<div id="lDefaults">
-                    <label className="abcd">Patinent's Name</label>
-                    <input className="abcd" type="text" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
-                </div>}
-                {<div id="rDefaults">
-                    <label className="abcd">YH Number</label>
-                    <input className="abcd" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
-                </div>}
-                <br /><br />
-                {<div id="rDefaults">
-                    <label className="abcd">Gender</label>
-                    <input type="radio" className="radioButton" name="gender" value="Male" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
-                    <label className="abcd">MALE</label>
-                    <input type="radio" className="radioButton" name="gender" value="Female" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
-                    <label>FEMALE</label>
-                </div>}<br />
-                {<div id="lDefaults">
-                    <label className="abcd">Date</label>
-                    <input className="abcd" type="date" name="Date" value={this.props.values.Date} onChange={(e) => this.onDateChange(e)} ></input>
-                </div>}
-                <br />
-            </div><br /><br />
+                <ul className="noDotL">
+                    <li>
+                        {
+                            <div id="lDefaults">
+                                <label className="abcd">Patinent's Name</label>
+                                <input className="abcd textInput" type="text" maxLength="50" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                            </div>
+
+                        }
+                    </li>
+                    <li>
+                        {
+                            <div id="rDefaults">
+                                <label className="abcd">YH Number</label>
+                                <input className="abcd textInput" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                            </div>
+                        }
+                    </li>
+                </ul>
+                <br></br>
+                <br/>
+                <ul className="noDotR">
+                    <li>
+                        {
+                            <div id="lDefaults">
+                                <label className="abcd">Gender</label>
+                                <input type="radio" className="radioButton" name="gender" value="Male" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
+                                <label className="abcd">MALE</label>
+                                <input type="radio" className="radioButton" name="gender" value="Female" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
+                                <label className="abcd">FEMALE</label>
+                            </div>
+                        }
+                    </li>
+                    <li>
+                        {
+                            <div id="rlDefaults">
+                                <label className="abcd">Date</label>
+                                <input className="abcd" type="date" name="Date" value={this.props.values.Date} onChange={(e) => this.onDateChange(e)} ></input>
+                            </div>
+                        }
+                    </li>
+                </ul>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
             {<div>
                 <label>History</label>
                 <input type="radio" className="radioButton" name="history" value="Left" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
@@ -295,11 +322,12 @@ class AssessmentForm extends Component {
                 <label>RIGHT</label>
                 <input type="radio" className="radioButton" name="history" value="Both" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                 <label>BOTH</label><br />
+
             </div>
             }
             <div>
                 {/* <h4>SYMPTOMS</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#symptoms">SYMPTOMS</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#symptoms">SYMPTOMS</button></h4>
                 <div id="symptoms" className="collapse">
                     <table id="tests">
                         <thead>
@@ -334,7 +362,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>EXAMINATION</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#examination">EXAMINATION</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#examination">EXAMINATION</button></h4>
                 <div id="examination" className="collapse">
                     <table id="tests">
 
@@ -366,7 +394,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>SHOULDER STRENGTH EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderstrengthexam">SHOULDER STRENGTH EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#shoulderstrengthexam">SHOULDER STRENGTH EXAM</button></h4>
                 <div id="shoulderstrengthexam" className="collapse">
                     <table id="tests">
                         <thead>
@@ -410,7 +438,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>SHOULDER INSTABILITY EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderinstabilityexam">SHOULDER INSTABILITY EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#shoulderinstabilityexam">SHOULDER INSTABILITY EXAM</button></h4>
                 <div id="shoulderinstabilityexam" className="collapse">
                     <table id="tests">
                         <thead>
@@ -454,7 +482,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>SHOULDER IMPINGEMENT SIGNS</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderimpingementsigns">SHOULDER IMPINGEMENT SIGNS</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#shoulderimpingementsigns">SHOULDER IMPINGEMENT SIGNS</button></h4>
                 <div id="shoulderimpingementsigns" className="collapse">
                     <table id="tests">
                         <thead>
@@ -498,7 +526,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>TESTS FOR LABRAL TEAR/BICEPS LESION</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#testsforlabraltear">TESTS FOR LABRAL TEAR/BICEPS LESION</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#testsforlabraltear">TESTS FOR LABRAL TEAR/BICEPS LESION</button></h4>
                 <div id="testsforlabraltear" className="collapse">
                     <table id="tests">
                         <thead>
@@ -542,7 +570,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>NEUROVASCULAR EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#neurovascularexamrp">NEUROVASCULAR EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#neurovascularexamrp">NEUROVASCULAR EXAM</button></h4>
                 <div id="neurovascularexamrp" className="collapse">
                     <table id="tests">
                         <thead>
@@ -586,7 +614,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>NEUROVASCULAR EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#neurovascularexamDCR">NEUROVASCULAR EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#neurovascularexamDCR">NEUROVASCULAR EXAM</button></h4>
                 <div id="neurovascularexamDCR" className="collapse">
                     <table id="tests">
                         <thead>
@@ -635,7 +663,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>SHOULDER RANGE OF MOTION</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderRangeOfMotionP">SHOULDER RANGE OF MOTION</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#shoulderRangeOfMotionP">SHOULDER RANGE OF MOTION</button></h4>
                 <div id="shoulderRangeOfMotionP" className="collapse">
                     <table id="tests">
                         <thead>
@@ -684,7 +712,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>SHOULDER RANGE OF MOTION</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#shoulderRangeOfMotionN">SHOULDER RANGE OF MOTION</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#shoulderRangeOfMotionN">SHOULDER RANGE OF MOTION</button></h4>
                 <div id="shoulderRangeOfMotionN" className="collapse">
                     <table id="tests">
                         <thead>
@@ -733,7 +761,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>GLOBAL RESTRICTION OF MOVEMENTS</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#grom">GLOBAL RESTRICTION OF MOVEMENTS</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#grom">GLOBAL RESTRICTION OF MOVEMENTS</button></h4>
                 <div id="grom" className="collapse">
                     <table id="tests">
                         <thead>
@@ -776,7 +804,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>WINGING OF SCAPULA</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#wingingsOfScapula">WINGING OF SCAPULA</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#wingingsOfScapula">WINGING OF SCAPULA</button></h4>
                 <div id="wingingsOfScapula" className="collapse">
                     <table id="tests">
                         <thead>
@@ -819,7 +847,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>MUSCLE WASTING</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#muscleWasting">MUSCLE WASTING</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#muscleWasting">MUSCLE WASTING</button></h4>
                 <div id="muscleWasting" className="collapse">
                     <table id="tests">
                         <thead>
@@ -862,7 +890,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>MOTOR EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#motorExam">MOTOR EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#motorExam">MOTOR EXAM</button></h4>
                 <div id="motorExam" className="collapse">
                     <table id="tests">
                         <thead>
@@ -906,7 +934,7 @@ class AssessmentForm extends Component {
 
             <div>
                 {/* <h4>SENSORY EXAM</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#sensoryExam">SENSORY EXAM</button></h4>
+                <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#sensoryExam">SENSORY EXAM</button></h4>
                 <div id="sensoryExam" className="collapse">
                     <table id="tests">
                         <thead>
@@ -949,7 +977,7 @@ class AssessmentForm extends Component {
             </div>
             <div>
                 {/* <h4>CERVICAL SPINE</h4> */}
-                <h4><button type="button" className="btn1 btn-info" data-toggle="collapse" data-target="#cervicalSpine">CERVICAL SPINE</button></h4>
+                <h4><button type="button" className="btn1 btn-info rightToLeft" data-toggle="collapse" data-target="#cervicalSpine">CERVICAL SPINE</button></h4>
                 <div id="cervicalSpine" className="collapse">
                     <label>SPURLING TEST</label>
                     <input type="radio" className="radioButton" name="spurlingtest" value="Positive" onChange={(e) => this.onRadioBtnChange("patientInfo", 0, e)}></input>
@@ -958,7 +986,7 @@ class AssessmentForm extends Component {
                     <label>NEGATIVE</label>
                 </div>
             </div>
-            <button value={1} onClick={this.props.clickBtn}>SUBMIT</button>
+            <button className="btnSubmit leftToRight" value={1} onClick={this.props.clickBtn}>SUBMIT</button>
         </div>)
     }
 }
