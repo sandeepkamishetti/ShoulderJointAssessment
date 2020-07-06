@@ -12,6 +12,7 @@ body{
 
 h1{
   color:rebeccapurple;
+  font-size: 30px;
 }
 
 ul.noDotL{
@@ -233,7 +234,7 @@ input.radioButton{
 
     h1{
       color:rgb(139, 40, 9);
-      font-size: large;
+      font-size: 30px;
       min-width: 400px;
       float: left;
       align-self: center;
