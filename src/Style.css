@@ -1,15 +1,26 @@
 body{
-  padding:200px;
-  padding-top: 30px;
-  padding-bottom: 20px;
+  margin:1000px;
+  margin-top: 300px;
+  margin-bottom: 20px;
+  background-color: lightgreen;
+}
+
+ .textInput{
+  min-width: 200px;
 }
 
 h1{
   color:rebeccapurple;
-  border: 0px groove red;
-  border-width: 2px;
-  border-radius: 25px;
-  
+}
+
+ul.noDotL{
+  list-style-type: none;
+  float: left;
+}
+
+ul.noDotR{
+  list-style-type: none;
+  float: right;
 }
 
 h4{
@@ -113,6 +124,141 @@ input.radioButton{
     border: none;
   }
 
+  .btnSubmit{
+    margin-left: 40%;
+    background-color:goldenrod;
+    text-align: center;
+    border: 1px solid red;
+    font-weight: bolder;
+  }
   .btn:hover{
     background-color: none;
   }
+
+  .leftImages{
+    border-radius: 50px;
+
+  }
+
+  .rightImages{
+    border-radius: 50px;
+    
+  }
+  /*Animation starts here*/
+
+.leftToRight{
+  position: relative;
+  -webkit-animation-name: leftToRight-dx;
+  -webkit-animation-duration: 3s;
+  animation-name: leftToRight-dx;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes leftToRight-dx{
+  from{
+    opacity: 0.1;
+    left: -425px;
+    top: 0px;
+  }
+  to{
+    opacity: 1;
+    left: 0px;
+    top: 0px;
+  }
+}
+
+/* Standard Syntax*/
+@keyframes leftToRight-dx{
+  from{
+    opacity: 0.1;
+    left: -425px;
+    top: 0px;
+  }
+  to{
+    opacity: 1;
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.rightToLeft{
+  position: relative;
+  -webkit-animation-name: rightToLeft-dx;
+  -webkit-animation-duration: 3s;
+  animation-name: rightToLeft-dx;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes rightToLeft-dx{
+  from{
+    opacity: 0.1;
+    left: 425px;
+    top: 0px;
+  }
+  to{
+    opacity: 1;
+    left: 0px;
+    top: 0px;
+  }
+}
+
+/* Standard Syntax*/
+@keyframes rightToLeft-dx{
+  from{
+    opacity: 0.1;
+    left: 425px;
+    top: 0px;
+  }
+  to{
+    opacity: 1;
+    left: 0px;
+    top: 0px;
+  }
+}
+  /*Animation ends here*/
+
+  @media screen and (max-width: 450px) {
+    body {
+      background-color: rgb(224, 250, 248);
+      margin-left: 2px;
+      margin-top: 100px;
+      margin-bottom: 20px;
+      float: left;
+    }
+
+    h1{
+      color:rgb(139, 40, 9);
+      font-size: large;
+      min-width: 400px;
+      float: left;
+      align-self: center;
+    }
+
+    .leftImages{
+      border-radius: 50px;
+      max-width: 30px;
+    }
+    .rightImages{
+      border-radius: 50px;
+      max-width: 30px;
+    }
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+/*@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/*@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) */
+/*@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+/*@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/*@media only screen and (min-width: 1200px) {...}*/
