@@ -267,54 +267,34 @@ class AssessmentForm extends Component {
 
         return (<div>
             <div><h1> <img className="leftImages" src={leftShoulder} alt=""></img> SHOULDER JOINT ASSESSMENT FORM <img className="rightImages" src={rightShoulder} alt=""></img></h1></div>
-            <div>
-                <ul className="noDotL">
-                    <li>
-                        {
-                            <div id="lDefaults">
-                                <label className="abcd">Patinent's Name</label>
-                                <input className="abcd textInput" type="text" maxLength="50" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
-                            </div>
+            <div className="name-gender">
+                <div className="name">
+                    <label className="txt-label">Patinent's Name</label>
+                    <input className="txt-label textInput" type="text" maxLength="50" placeholder="Enter your Name" name="patientName" value={this.props.values.patientName} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                </div>
+                <div className="gender">
+                    <label className="txt-label">Gender</label>
 
-                        }
-                    </li>
-                    <li>
-                        {
-                            <div id="rDefaults">
-                                <label className="abcd">YH Number</label>
-                                <input className="abcd textInput" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
-                            </div>
-                        }
-                    </li>
-                </ul>
-                <br></br>
-                <br/>
-                <ul className="noDotR">
-                    <li>
-                        {
-                            <div id="lDefaults">
-                                <label className="abcd">Gender</label>
-                                <input type="radio" className="radioButton" name="gender" value="Male" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
-                                <label className="abcd">MALE</label>
-                                <input type="radio" className="radioButton" name="gender" value="Female" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
-                                <label className="abcd">FEMALE</label>
-                            </div>
-                        }
-                    </li>
-                    <li>
-                        {
-                            <div id="rlDefaults">
-                                <label className="abcd">Date</label>
-                                <input className="abcd" type="date" name="Date" value={this.props.values.Date} onChange={(e) => this.onDateChange(e)} ></input>
-                            </div>
-                        }
-                    </li>
-                </ul>
+                    <input type="radio" className="radioButton" name="gender" value="Male" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
+                    <label className=""><i className="fas fa-male"></i></label>
+                    <input type="radio" className="radioButton" name="gender" value="Female" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
+                    <label className=""><i className="fas fa-female"></i></label>
+                </div>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            {<div>
+            <div className="yhnum-date">
+                <div className="yhnum">
+                    <label className="txt-label">YH Number</label>
+                    <input className="txt-label textInput" type="text" placeholder="Enter your YH Number if any" name="yhNum" value={this.props.values.yhNum} onChange={(e) => this.onTextChanges(arrayName, 0, e)} ></input>
+                </div>
+
+                <div className="date">
+                    <label className="txt-label">Date</label>
+                    <input className="txt-label" type="date" name="Date" value={this.props.values.Date} onChange={(e) => this.onDateChange(e)} ></input>
+                </div>
+            </div>
+
+
+            <div className="history">
                 <label>History</label>
                 <input type="radio" className="radioButton" name="history" value="Left" onChange={(e) => this.onRadioBtnChange(arrayName, 0, e)}></input>
                 <label>LEFT</label>
@@ -324,7 +304,7 @@ class AssessmentForm extends Component {
                 <label>BOTH</label><br />
 
             </div>
-            }
+            
             <div>
                 {/* <h4>SYMPTOMS</h4> */}
                 <h4><button type="button" className="btn1 btn-info leftToRight" data-toggle="collapse" data-target="#symptoms">SYMPTOMS</button></h4>
