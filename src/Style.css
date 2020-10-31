@@ -1,8 +1,7 @@
 body{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin:1000px;
+  margin-top: 300px;
+  margin-bottom: 20px;
   background-color: lightgreen;
 }
 
@@ -12,17 +11,6 @@ body{
 
 h1{
   color:rebeccapurple;
-  font-size: 30px;
-}
-
-ul.noDotL{
-  list-style-type: none;
-  float: left;
-}
-
-ul.noDotR{
-  list-style-type: none;
-  float: right;
 }
 
 h4{
@@ -45,8 +33,8 @@ input.radioButton{
   margin-left: 10px;
   margin-right: 5px;
   width: auto;
-  height: 15px;
-  width: 25px;
+  height: 20px;
+  width: 30px;
   background-color: #eee;
   border-radius: 50%;
 }
@@ -90,19 +78,45 @@ input.radioButton{
     height: 5px;
   }
   
-#lDefaults {
-  float: left;
-  margin:20px;
+.yhnum-date, .name-gender{
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 
-.abcd{
+.fas{
+  font-size: 2.5rem;
+}
+
+.fa-female{
+  color: green;
+}
+
+.fa-male{
+  color: red;
+  padding: 0 120px 0 0;
+}
+
+.name{
+  flex: 0 0 50%;
+}
+
+.yhnum{
+  flex: 0 0 50%;
+}
+
+.history{
+  margin: 30px 0;
+
+}
+
+.txt-label{
   margin: 2px;
   border: 1px solid red;
+  width: 230px;
+  height: 24px;
 }
 
-#rDefaults{
-  float: right;
-}
   #tests tr:nth-child(even) {
     background-color:lightcyan;
   }
@@ -223,7 +237,7 @@ input.radioButton{
 }
   /*Animation ends here*/
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 767px) {
     body {
       background-color: rgb(224, 250, 248);
       margin-left: 2px;
@@ -234,7 +248,7 @@ input.radioButton{
 
     h1{
       color:rgb(139, 40, 9);
-      font-size: 30px;
+      font-size: large;
       min-width: 400px;
       float: left;
       align-self: center;
